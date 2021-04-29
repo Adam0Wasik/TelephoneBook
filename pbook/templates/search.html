@@ -1,0 +1,52 @@
+{% extends 'basePage.html' %}
+    {% load i18n %}
+
+    {% block title %}
+       PhoneBook Search
+    {% endblock  %}
+
+    {% block content %}
+        <div style="text-align:center;">
+            <form  method="post" >
+                {% csrf_token %}
+                   {{ form.search }}
+                    <button type="submit">Search</button>
+            </form><br>
+
+
+        </div>
+
+         <table class="table" width="100%">
+            <thead style="background-color:#222222 ">
+                <tr>
+                    <th style="color:gray" width="10%">
+                        <center>
+                        Index
+                        </center>
+                    </th>
+
+                    <th style="color:gray" width="80%">Person</th>
+
+                    <th style="color:gray" width="10%">
+                        <center>
+                            Actions
+                        </center>
+                    </th>
+                </tr>
+            </thead>
+
+<!--        {% for element in objectList %}-->
+<!--            <tr>-->
+<!--                <td><center>{{ element.id }}</center></td>-->
+
+<!--                <td>{{ element.domain }}</td>-->
+
+<!--                <td>-->
+<!--                    <center>-->
+<!--                     <a href="/deleteWP/{{ fileIndex }}/{{ element.id }}/{{ objectList.number }}"><button type="button" class="btn  btn-danger btn-sm " >{% trans "Delete" %}</button> </a>-->
+<!--                    </center>-->
+<!--                </td>-->
+<!--            </tr>-->
+<!--        {% endfor %}-->
+        </table>
+    {% endblock  %}
