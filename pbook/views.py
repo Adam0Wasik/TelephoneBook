@@ -115,7 +115,7 @@ def edit(request, osid):
             name = form.cleaned_data['name']
             surname = form.cleaned_data['surname']
             person.imie = name
-            person.nazwisk = surname
+            person.nazwisko = surname
             person.save()
             return redirect("/")
     return render(request, "edit.html", {'form': form, })
