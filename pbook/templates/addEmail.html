@@ -10,13 +10,13 @@
             <form  method="post" >
                 {% csrf_token %}
                     <b>Person's full name: </b> {{ osoba.imie }} {{ osoba.nazwisko }}<br>
-                    <b>Current numbers:</b><br>
-                    {% for num in telefonList %}
-                        {% if osoba == num.osoba %}
-                            {{ num.telefon }}<br>
+                    <b>Current emails:</b><br>
+                     {% for em in emailList %}
+                        {% if osoba == em.osoba %}
+                            {{ em.email }}<br>
                         {% endif %}
                     {% endfor %} <br><br>
-                    <b>Add new number:</b>{{ form.number }}
+                    <b>Add new email:</b>{{ form.email }}
                     <button type="submit " class="btn btn-success">Add</button>
             </form><br>
         </div>

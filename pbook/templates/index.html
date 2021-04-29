@@ -63,15 +63,14 @@
                 </td>
 
                 <td style="text-align:right">
-
                          {% if os not in emailExistList or os not in telefonExistList %}
-                     <a href=""><button type="button" class="btn  btn-danger btn-sm " >Delete</button> </a>
+                     <a href="delete/{{os.id}}"><button type="button" class="btn  btn-danger btn-sm " >Delete</button> </a>
                         {% endif %}
-                     <a href=""><button type="button" class="btn btn-info btn-sm " >Edit</button> </a><br><br>
+                     <a href="edit/{{os.id}}"><button type="button" class="btn btn-info btn-sm " >Edit</button> </a><br><br>
 
                      <b> Add new: </b>
-                    <a href=""><button type="button" class="btn btn-success btn-sm " >Number</button> </a>
-                    <a href=""><button type="button" class="btn btn-success btn-sm " >Email</button> </a>
+                    <a href="addNum/{{os.id}}"><button type="button" class="btn btn-success btn-sm " >Number</button> </a>
+                    <a href="addEm/{{os.id}}"><button type="button" class="btn btn-success btn-sm " >Email</button> </a>
 
                 </td>
             </tr>

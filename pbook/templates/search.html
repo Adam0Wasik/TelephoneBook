@@ -9,14 +9,15 @@
         <div style="text-align:center;">
             <form  method="post" >
                 {% csrf_token %}
-                   {{ form.search }}
-                    <button type="submit">Search</button>
+                   {{ form.name }}  {{ form.surname }}<br><br>
+                   {{ form.email }}  {{ form.number }}<br><br>
+                    <button type="submit" class="btn btn-success">Search</button>
             </form><br>
 
 
         </div>
 
-         <table class="table" width="100%">
+<table class="table" width="100%">
             <thead style="background-color:#222222 ">
                 <tr>
                     <th style="color:gray" width="10%">
@@ -25,9 +26,9 @@
                         </center>
                     </th>
 
-                    <th style="color:gray" width="80%">Person</th>
+                    <th style="color:gray" width="60%">Person</th>
 
-                    <th style="color:gray" width="10%">
+                    <th style="color:gray" width="30%">
                         <center>
                             Actions
                         </center>
@@ -35,18 +36,53 @@
                 </tr>
             </thead>
 
-<!--        {% for element in objectList %}-->
-<!--            <tr>-->
-<!--                <td><center>{{ element.id }}</center></td>-->
+        {% for os in osobaList %}
+            <tr>
+                <td><center>{{ os.id }}</center></td>
 
-<!--                <td>{{ element.domain }}</td>-->
+                <td>
+                    <b>Full name:</b> {{ os.imie }} {{ os.nazwisko }}<br>
+                    <b>Numbers:</b><br>
 
-<!--                <td>-->
-<!--                    <center>-->
-<!--                     <a href="/deleteWP/{{ fileIndex }}/{{ element.id }}/{{ objectList.number }}"><button type="button" class="btn  btn-danger btn-sm " >{% trans "Delete" %}</button> </a>-->
-<!--                    </center>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--        {% endfor %}-->
+                    {% for tel in telefonList %}
+                        {% if os == tel.osoba %}
+                            <div class="st">
+                                {{ tel.telefon }}<br>
+
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+
+                    <b>Emails:</b><br>
+
+                        {% for em in emailList %}
+                            {% if os == em.osoba %}
+                                <div class="st">
+                                    {{ em.email }}<br>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                </td>
+
+                <td style="text-align:right">
+                         {% if os not in emailExistList or os not in telefonExistList %}
+                     <a href="delete/{{os.id}}"><button type="button" class="btn  btn-danger btn-sm " >Delete</button> </a>
+                        {% endif %}
+                     <a href="edit/{{os.id}}"><button type="button" class="btn btn-info btn-sm " >Edit</button> </a><br><br>
+
+                     <b> Add new: </b>
+                    <a href="addNum/{{os.id}}"><button type="button" class="btn btn-success btn-sm " >Number</button> </a>
+                    <a href="addEm/{{os.id}}"><button type="button" class="btn btn-success btn-sm " >Email</button> </a>
+
+                </td>
+            </tr>
+        {% endfor %}
         </table>
+
+
+<style>
+div.st {
+    padding-left: 70px;
+ }
+</style>
     {% endblock  %}

@@ -1,0 +1,23 @@
+{% extends 'basePage.html' %}
+    {% load i18n %}
+
+    {% block title %}
+       PhoneBook Edit
+    {% endblock  %}
+
+    {% block content %}
+        <div style="text-align:center;">
+            <form  method="post" >
+                {% csrf_token %}
+                   {{ form.name }}  {{ form.surname }}<br><br>
+                    <button type="submit" class="btn btn-success">Save</button>
+            </form><br>
+
+
+        </div>
+
+
+
+
+
+    {% endblock  %}
